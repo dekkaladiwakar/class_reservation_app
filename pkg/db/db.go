@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/dekkaladiwakar/class-reservation-app/internal/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -23,5 +24,11 @@ func ConnectToDB() {
 
 	if err != nil {
 		log.Fatal("Failed to connect to database...")
+	}
+
+	// Auto migrate the schema
+	err = DB.AutoMigrate(&models.Role{}, &models.User{}, &models.Student{}, &models.Dean{}, &models.Auth{}, &models.Timeslot{}, &models.Booking{})
+	if err != nil {
+		panic(err)
 	}
 }

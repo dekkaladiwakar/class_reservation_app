@@ -2,16 +2,9 @@ package models
 
 import "gorm.io/gorm"
 
-type User struct {
-	gorm.Model
-	Name string
-	Role Role
-	Auth Auth
-}
-
 type Auth struct {
 	gorm.Model
-	Token        string
-	PasswordHash string
-	UserID       uint
+	UserID uint   `gorm:"not null"`
+	Token  string `gorm:"not null"`
+	// Expiry time.Time `gorm:"not null"`
 }
