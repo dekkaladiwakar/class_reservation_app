@@ -13,6 +13,9 @@ func SetupRouter() *gin.Engine {
 
 	router.GET("/ping", pingHandler)
 
+	router.POST("/role", handlers.CreateRole)
+	router.POST("/user", handlers.CreateUser)
+
 	studentGroup := router.Group("/student")
 
 	studentGroup.POST("/", handlers.CreateStudent)

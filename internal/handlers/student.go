@@ -12,5 +12,5 @@ func CreateStudent(c *gin.Context) {
 	if student.Error != nil {
 		c.JSON(http.StatusBadRequest, student.Error)
 	}
-	c.JSON(http.StatusOK, student)
+	c.JSON(http.StatusCreated, student)
 }

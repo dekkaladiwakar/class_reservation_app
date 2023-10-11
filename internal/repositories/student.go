@@ -14,6 +14,6 @@ func CreateStudent() *gorm.DB {
 	name := scripts.GenerateRandomString(10)
 	student := models.Student{Name: name, StudyYear: rand.Intn(4) + 1, Email: fmt.Sprintf("%s@gmail.com", name)}
 
-	result := db.DB.Create(student)
+	result := db.DB.Create(&student)
 	return result
 }
