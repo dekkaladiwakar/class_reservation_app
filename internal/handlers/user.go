@@ -28,12 +28,12 @@ func CreateUser(c *gin.Context) {
 		return
 	}
 
+	// Create a User
 	id, error := services.CreateUser(user.RoleType)
 
 	if error != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": error.Error()})
 		return
 	}
-
 	c.JSON(http.StatusCreated, gin.H{"id": id})
 }

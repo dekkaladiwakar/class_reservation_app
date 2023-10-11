@@ -9,8 +9,11 @@ import (
 
 func CreateStudent(c *gin.Context) {
 	student := services.CreateStudent()
+
 	if student.Error != nil {
-		c.JSON(http.StatusBadRequest, student.Error)
+		c.JSON(http.StatusBadRequest, gin.H{"error": student.Error.Error()})
+		return
 	}
+
 	c.JSON(http.StatusCreated, student)
 }
