@@ -8,12 +8,12 @@ import (
 )
 
 func CreateStudent(c *gin.Context) {
-	student := services.CreateStudent()
+	id, err := services.CreateStudent()
 
-	if student.Error != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": student.Error.Error()})
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
-	c.JSON(http.StatusCreated, student)
+	c.JSON(http.StatusCreated, gin.H{"id": id})
 }

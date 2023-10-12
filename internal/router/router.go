@@ -18,7 +18,7 @@ func SetupRouter() *gin.Engine {
 
 	studentGroup := router.Group("/student")
 
-	studentGroup.POST("/", handlers.CreateStudent)
+	studentGroup.POST("", handlers.CreateStudent)
 
 	return router
 }
