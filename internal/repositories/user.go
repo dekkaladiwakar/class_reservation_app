@@ -1,6 +1,8 @@
 package repositories
 
 import (
+	"errors"
+
 	"github.com/dekkaladiwakar/class-reservation-app/internal/models"
 	"github.com/dekkaladiwakar/class-reservation-app/pkg/db"
 )
@@ -17,4 +19,13 @@ func CreateUser(roleID uint) (uint, error) {
 
 	return user.ID, result.Error
 
+}
+
+func GetLastUser() (uint, error) {
+	user := models.User{}
+	result := db.DB.Last(&user)
+	if result.RowsAffected == 0 {
+		return 0, errors.New("no users found")
+	}
+	return user.ID, nil
 }

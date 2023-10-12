@@ -9,3 +9,7 @@ func CreateUser(roleType string) (uint, error) {
 	}
 	return repositories.CreateUser(id)
 }
+
+func GetLastUser() (uint, error) {
+	return repositories.GetLastUser()
+}

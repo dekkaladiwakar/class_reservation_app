@@ -5,5 +5,11 @@ import (
 )
 
 func CreateStudent() (uint, error) {
-	return repositories.CreateStudent()
+	id, err := GetLastUser()
+
+	if err != nil {
+		return 0, err
+	}
+
+	return repositories.CreateStudent(id)
 }
