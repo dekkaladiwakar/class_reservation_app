@@ -11,14 +11,20 @@ func SetupRouter() *gin.Engine {
 	router := gin.Default()
 	router.SetTrustedProxies([]string{"127.0.0.1"})
 
+	// Health Check
 	router.GET("/ping", pingHandler)
 
+	// Admin Routes
 	router.POST("/role", handlers.CreateRole)
 	router.POST("/user", handlers.CreateUser)
 
+	// Student Routes
 	studentGroup := router.Group("/student")
-
 	studentGroup.POST("", handlers.CreateStudent)
+
+	// Dean Routes
+	deanGroup := router.Group("/dean")
+	deanGroup.POST("", handlers.CreateDean)
 
 	return router
 }
