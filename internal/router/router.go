@@ -18,6 +18,9 @@ func SetupRouter() *gin.Engine {
 	router.POST("/role", handlers.CreateRole)
 	router.POST("/user", handlers.CreateUser)
 
+	// Auth Routes
+	router.POST("/login", handlers.Login)
+
 	// Student Routes
 	studentGroup := router.Group("/student")
 	studentGroup.POST("", handlers.CreateStudent)

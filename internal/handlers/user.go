@@ -10,6 +10,7 @@ import (
 
 type CreateUserDto struct {
 	RoleType string `json:"roleType" validate:"required"`
+	// TODO: Add Password field for validation
 }
 
 func CreateUser(c *gin.Context) {
